@@ -1,18 +1,20 @@
-from math import factorial
+'''
+k-SUBSET
+--------
+A list of items taken from 
+[1,2,3,...,n] that are distinct
+Ranking includes ONLY length k subsets
+    (number of 1s in list is k)
+'''
 
 
-def combination(n, k):
+from comFuncs import combination
+
+
+def colexUnrank(r, k, n):
+	'''unranks colex ordering
+	Algorithm 2.10 in book'''
 	
-	try:
-		x = factorial(n) / (factorial(k) * factorial(n-k))
-	except:
-		x = 0
-	
-	return x
-	
-
-
-def unrank(r, k, n):
 	T = [0]*k
 	x = n
 	for i in range(1,k+1):
