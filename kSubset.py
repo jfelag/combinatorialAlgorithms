@@ -10,6 +10,15 @@ Ranking includes ONLY length k subsets
 
 from comFuncs import combination
 
+def colexRank(T, k):
+	'''ranks colex ordering
+	Algorithm 2.9 in book'''
+	
+	r = 0
+	for i in range(1,k+1):
+		r += combination(T[i-1]-1, k+1-i)
+	return r
+
 
 def colexUnrank(r, k, n):
 	'''unranks colex ordering
@@ -31,7 +40,9 @@ def colexUnrank(r, k, n):
 	return T
 
 
-def successor(T, k, n):
+def colexSuccessor(T, k, n):
+	'''Finds next item in colex ordering
+	Exercise 2.6 in book'''
 	
 	T = T[::-1]
 	inOrder = True

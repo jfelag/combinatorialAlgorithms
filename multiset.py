@@ -6,17 +6,16 @@ MULTISET
 '''
 
 from math import factorial
+from comFuncs import combination
 
-def combination(n, k):
-	
-	try:
-		x = factorial(n) / (factorial(k) * factorial(n-k))
-	except:
-		x = 0
-	
-	return x
+'''
+Algorithms developed are from
+Exercise 2.13 in book
 
-def rank(T, k, n):
+'''
+
+
+def lexRank(T, k, n):
 	
 	#base cases
 	if k==1:
@@ -32,7 +31,7 @@ def rank(T, k, n):
 			return rank(T[1:], k-1, n)
 			
 
-def unrank(r, k, n):
+def lexUnrank(r, k, n):
 	
 	if k == 1:
 		return [r]
@@ -51,7 +50,7 @@ def unrank(r, k, n):
 			if r <= c:
 				return [i+1] + unrank(r-k,k-1,n)
 
-def successor(T, k, n):
+def lexSuccessor(T, k, n):
 	
 	if T[k-1] != n:
 		T[k-1] += 1
@@ -70,13 +69,8 @@ def successor(T, k, n):
 		
 		return T
 	
-
-def main():
 	
-	print "TEST ONE"
 	
-	T = [1,1,1]
-	for i in range(35):
-		print i+1, unrank(i+1, 3, 4)
-		T = successor(T,3,4)
-		
+	
+	
+	

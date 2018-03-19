@@ -31,6 +31,17 @@ def k_permutation(n, k):
 ASSUMES SETS ARE REPRESENTED IN 
 BINARY FORMAT WITH SAME LENGTH'''
 
+def insert(a, A):
+	
+	A[a-1] = 1
+	return A
+
+def element_of(a, A):
+	
+	if A[a-1] == 1:
+		return True
+	else:
+		return False
 
 def union(A, B):
 	'''Union of two sets

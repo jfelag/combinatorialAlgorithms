@@ -5,8 +5,8 @@ A list of all binary strings of a certain length
 such that the Hamming distance between any pair of
 adjacent members is 1
 '''
-
-from comFuncs import sym_diff
+from math import floor
+from comFuncs import sym_diff, element_of, union, insert
 
 def genBinaryReflected(n):
 	'''
@@ -52,3 +52,72 @@ def successor(n, T):
 		U = sym_diff(T, A)
 	
 	return U
+
+def rank(n, T):
+	'''
+	Ranking for Gray Code
+	Algorithm 2.4 in book'''
+	
+	r = 0
+	b = 0
+	
+	for i in range(n-1, -1, -1):
+		
+		if element_of(n-i, T):
+			b = 1-b
+		if b == 1:
+			r += 2**i
+			
+	return r
+
+def unrank(n, r):
+	
+	T = [0]*n
+	bp = 0
+	
+	for i in range(n-1, -1, -1):
+		b = floor(r/(2**i))
+		if b != bp:
+			A = [0]*n
+			A = insert(n-i, A)
+			T = union(T, A)
+		bp = b
+		r -= b*2**i
+	return T
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
